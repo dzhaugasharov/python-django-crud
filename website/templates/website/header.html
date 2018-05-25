@@ -1,0 +1,12 @@
+<header>
+    Django Books CRUD
+    <ul>
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'website:login' %}">Log in</a></li>
+        <li><a href="{% url 'website:register' %}">Sign in</a></li>
+        {% else %}
+        <li><a href="{% url 'website:profile' %}">Profile</a></li>
+        <li><a href="{% url 'website:logout' %}">Logout</a></li>
+        {% endif %}
+    </ul>
+</header>

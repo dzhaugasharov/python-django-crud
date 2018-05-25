@@ -1,0 +1,20 @@
+{% extends 'website/template.html' %}
+
+{% block content %}
+<h2>Email confirmation</h2>
+
+<form action="" method="get">
+    {% csrf_token %}
+
+     <div class="form-group">
+        <label>Paste code here</label>
+        <input type="text" name="code" class="form-control"/>
+    </div>
+
+    <div>
+        <input type="submit" value="Confirm" class="btn btn-primary"/>
+    </div>
+</form>
+
+{% endblock %}
+

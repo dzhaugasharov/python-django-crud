@@ -1,0 +1,11 @@
+{% extends 'website/template.html' %}
+
+{% block content %}
+    <h2>{{book.title}}</h2>
+    <p>Author: {{book.author}}</p>
+    <p>ISBN: {{book.isbn}}</p>
+    <p>Print Year: {{book.print_year}}</p>
+    <p>Description: {{book.description}}</p>
+    <p>Created at: {{book.created_at}}</p>
+    <p>Updated at: {{book.updated_at}}</p>
+{% endblock %}

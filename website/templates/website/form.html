@@ -1,0 +1,46 @@
+{% extends 'website/template.html' %}
+
+{% block content %}
+
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a>Add book</a></li>
+    </ol>
+
+    <h2>Add book</h2>
+
+    {% if errors %}<p><strong>{{ errors }}</strong></p>{% endif %}
+    {% if success %}<p class="text-success"><strong>Succesifuly saved!</strong></p>{% endif %}
+
+    {% if book.id %}
+    <form action="{% url 'website:edit' book.id %}" method="post">
+    {% else %}
+    <form action="{% url 'website:add' %}" method="post">
+    {% endif %}
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" value="{{book.title}}" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Author</label>
+            <input type="text" name="author" value="{{book.author}}" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>ISBN</label>
+            <input type="text" name="isbn" value="{% if book.isbn %}{{book.isbn}}{% endif %}" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Print year</label>
+            <input type="text" name="print_year" value="{% if book.print_year %}{{book.print_year}}{% endif %}" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control">{% if book.description %}{{book.description}}{% endif %}</textarea>
+        </div>
+
+        <input type="submit" value="Send" class="btn btn-primary" />
+        <a href="{% url 'website:index' %}" class="btn btn-default">Cancel</a>
+    </form>
+
+{% endblock %}
